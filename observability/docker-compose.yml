@@ -1,0 +1,55 @@
+services:
+
+    prometheus:
+        image: prom/prometheus:latest
+        container_name: prometheus-l3gl
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        ports:
+            - "9090:9090"
+        networks:
+            - observability
+
+    grafana:
+        image: grafana/grafana:latest
+        container_name: grafana-l3gl
+        ports:
+            - "3000:3000"
+        networks:
+            - observability
+        depends_on:
+            - prometheus
+            - loki
+
+    loki:
+        image: grafana/loki:2.9.0
+        container_name: loki-l3gl
+        ports:
+            - "3100:3100"
+        command: -config.file=/etc/loki/local-config.yaml
+        networks:
+            - observability
+
+    promtail:
+        image: grafana/promtail:2.9.0
+        container_name: promtail-l3gl
+        volumes:
+            - /var/log:/var/log
+            - ./promtail-config.yml:/etc/promtail/config.yml
+        command: -config.file=/etc/promtail/config.yml
+        networks:
+            - observability
+        depends_on:
+            - loki
+
+    jaeger:
+        image: jaegertracing/all-in-one:1.54
+        container_name: jaeger-l3gl
+        ports:
+            - "16686:16686"
+            - "14250:14250"
+        networks:
+            - observability
+
+networks:
+    observability:
