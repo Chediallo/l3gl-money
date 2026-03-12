@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "61c9ac72-cc10-4fcf-b4a6-d4a6f5f345c7",
+    "name": "L3gl Money",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25252070"
+  },
+  "item": [
+    {
+      "name": "Find all transactions",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8085/api/transactions",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "api",
+            "transactions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cashin money",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"accountId\": 1,\r\n    \"amount\": 2000,\r\n    \"source\": \"Orange Money\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8085/api/cashin",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "api",
+            "cashin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create new account",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "// {\r\n//     \"owner\": \"Cherif\",\r\n//     \"balance\": 0,\r\n//     \"phoneNumber\": \"770000000\"\r\n// }\r\n\r\n{\r\n    \"owner\": \"Omar\",\r\n    \"balance\": 0,\r\n    \"phoneNumber\": \"771111111\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8085/api/accounts",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "api",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Transfer money",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"from\": 1,\r\n    \"to\": 2,\r\n    \"amount\": 10.5\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8085/api/transfer",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "api",
+            "transfer"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find all accounts",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "// {\r\n//     \"owner\": \"Cherif\",\r\n//     \"balance\": 0,\r\n//     \"phoneNumber\": \"770000000\"\r\n// }\r\n\r\n{\r\n    \"owner\": \"Omar\",\r\n    \"balance\": 0,\r\n    \"phoneNumber\": \"771111111\"\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8085/api/accounts",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "api",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
